@@ -1,8 +1,8 @@
-import IConsulta from "./types/IConsulta";
-import useFetch from "./useFetch";
+import IConsulta from './types/IConsulta'
+import useFetch from './useFetch'
 
 const useDadosConsulta = () => {
-    return useFetch<IConsulta[]>({ url: 'consultas' });
+  return useFetch<IConsulta[]>({ url: 'consulta' })
 }
 
-export default useDadosConsulta;
+export default useDadosConsulta
