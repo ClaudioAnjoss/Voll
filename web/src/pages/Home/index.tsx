@@ -9,6 +9,10 @@ export default function Home() {
           <img src={Capa} alt="Capa" />
         </div>
 
+        <div>
+          <img src={Capa} alt="Capa" />
+        </div>
+
         {/* Busca */}
         <div></div>
 
