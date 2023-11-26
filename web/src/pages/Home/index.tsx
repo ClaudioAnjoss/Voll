@@ -1,18 +1,13 @@
+import styled from 'styled-components'
 import Capa from 'assets/capa.png'
+import Medicos from 'assets/medicos.png'
+import Banner from 'components/Banner'
 
 export default function Home() {
   return (
     <>
       <section>
-        {/* Capa */}
-        <div>
-          <img src={Capa} alt="Capa" />
-        </div>
-
-        <div>
-          <img src={Capa} alt="Capa" />
-        </div>
-
+        <Banner />
         {/* Busca */}
         <div></div>
 
