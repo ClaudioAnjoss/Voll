@@ -113,10 +113,6 @@ export default function Busca() {
         <span>Neurologista</span>
         <span>Neurologista</span>
         <span>Neurologista</span>
-        <span>Neurologista</span>
-        <span>Neurologista</span>
-        <span>Neurologista</span>
-        <span>Neurologista</span>
       </CardsBusca>
     </ContainerBusca>
   )
