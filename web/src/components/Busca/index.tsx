@@ -1,6 +1,6 @@
 import Botao from 'components/Botao'
 import styled from 'styled-components'
-import { AiOutlineMonitor } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineMonitor } from 'react-icons/ai'
 import { ImLocation2 } from 'react-icons/im'
 
 const ContainerBusca = styled.div`
@@ -13,6 +13,7 @@ const ContainerBusca = styled.div`
   padding: 32px;
   border-radius: 8px;
   gap: 32px;
+  box-sizing: border-box;
 
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.15);
 `
@@ -21,12 +22,13 @@ const ContainerInput = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  width: 994px;
+  max-width: 994px;
+  gap: 20px;
 `
 const InputBusca = styled.div`
   display: flex;
 
-  width: 439px;
+  max-width: 439px;
   height: 48px;
   padding: 0px, 16px, 0px, 0px;
   border-radius: 8px;
@@ -49,7 +51,7 @@ const InputBusca = styled.div`
   }
 
   input {
-    width: 100%;
+    width: 25vw;
     padding-left: 8px;
     font-size: 16px;
 
@@ -80,16 +82,20 @@ const Descricao = styled.span`
   margin: 0 auto;
 `
 const CardsBusca = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: table-column-group;
   gap: 10px;
 
   span {
-    padding: 4px, 8px, 4px, 8px;
+    margin: 4px;
     border-radius: 4px;
 
     background: rgba(231, 235, 239, 1);
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
   }
 `
 
@@ -109,10 +115,54 @@ export default function Busca() {
       </ContainerInput>
       <Descricao>Você pode estar procurando por estas categorias:</Descricao>
       <CardsBusca>
-        <span>Neurologista</span>
-        <span>Neurologista</span>
-        <span>Neurologista</span>
-        <span>Neurologista</span>
+        <span>
+          Neurologista{' '}
+          <button>
+            <AiOutlineClose />
+          </button>
+        </span>
+        <span>
+          Neurologista{' '}
+          <button>
+            <AiOutlineClose />
+          </button>
+        </span>
+        <span>
+          Neurologista{' '}
+          <button>
+            <AiOutlineClose />
+          </button>
+        </span>
+        <span>
+          Neurologista{' '}
+          <button>
+            <AiOutlineClose />
+          </button>
+        </span>
+        <span>
+          Neurologista{' '}
+          <button>
+            <AiOutlineClose />
+          </button>
+        </span>
+        <span>
+          Neurologista{' '}
+          <button>
+            <AiOutlineClose />
+          </button>
+        </span>
+        <span>
+          Neurologista{' '}
+          <button>
+            <AiOutlineClose />
+          </button>
+        </span>
+        <span>
+          Neurologista{' '}
+          <button>
+            <AiOutlineClose />
+          </button>
+        </span>
       </CardsBusca>
     </ContainerBusca>
   )

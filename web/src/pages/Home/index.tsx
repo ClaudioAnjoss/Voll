@@ -3,6 +3,8 @@ import Capa from 'assets/capa.png'
 import Medicos from 'assets/medicos.png'
 import Banner from 'components/Banner'
 import Busca from 'components/Busca'
+import NavigationMenu from 'components/NavigationMenu'
+import Depoimentos from 'components/Depoimentos'
 
 export default function Home() {
   return (
@@ -10,11 +12,11 @@ export default function Home() {
       <section>
         <Banner />
 
-        {/* Busca */}
         <Busca />
 
-        {/* Depoimentos */}
-        <div></div>
+        <NavigationMenu />
+
+        <Depoimentos />
       </section>
     </>
   )
