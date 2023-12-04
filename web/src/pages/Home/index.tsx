@@ -14,6 +14,14 @@ export default function Home() {
 
         <Busca />
 
+        <span>Notifacao</span>
+        <span>Notifacao</span>
+        <span>Notifacao</span>
+        <span>Notifacao</span>
+        <span>Notifacao</span>
+        <span>Notifacao</span>
+        <span>Notifacao</span>
+
         <NavigationMenu />
 
         <Depoimentos />
