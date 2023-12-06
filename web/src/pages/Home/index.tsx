@@ -18,6 +18,8 @@ export default function Home() {
 
         <Depoimentos />
       </section>
+
+      <section>{/* Depoimentos */}</section>
     </>
   )
 }
