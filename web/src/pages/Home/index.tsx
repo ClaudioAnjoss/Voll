@@ -16,13 +16,6 @@ export default function Home() {
 
         <NavigationMenu />
 
-        <span>Depo</span>
-        <span>Depo</span>
-        <span>Depo</span>
-        <span>Depo</span>
-        <span>Depo</span>
-        <span>Depo</span>
-
         <Depoimentos />
       </section>
     </>
