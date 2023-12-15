@@ -15,6 +15,12 @@ export default function Home() {
         <Busca />
 
         <NavigationMenu />
+        <NavigationMenu />
+        <NavigationMenu />
+        <NavigationMenu />
+        <NavigationMenu />
+        <NavigationMenu />
+        <NavigationMenu />
 
         <Depoimentos />
       </section>
