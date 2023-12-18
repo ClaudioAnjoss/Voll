@@ -13,6 +13,14 @@ export default function Home() {
         <Banner />
 
         <Busca />
+        <Busca />
+        <Busca />
+        <Busca />
+        <Busca />
+        <Busca />
+        <Busca />
+        <Busca />
+        <Busca />
 
         <NavigationMenu />
 
