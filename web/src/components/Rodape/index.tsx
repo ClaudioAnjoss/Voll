@@ -21,6 +21,7 @@ const ListaEstilizada = styled.ul`
 
 const ItemEstilizado = styled.li`
   list-style-type: none;
+  margin: 4px;
 `
 
 function Rodape() {

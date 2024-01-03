@@ -9,13 +9,13 @@ const ContainerBusca = styled.div`
   align-items: center;
   max-width: 1200px;
   margin: 40px auto;
-  height: 214px;
   padding: 32px;
   border-radius: 8px;
   gap: 32px;
   box-sizing: border-box;
 
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 `
 const ContainerInput = styled.div`
   display: flex;
@@ -24,10 +24,16 @@ const ContainerInput = styled.div`
 
   max-width: 994px;
   gap: 20px;
+
+  @media only screen and (max-width: 670px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 const InputBusca = styled.div`
   display: flex;
 
+  width: 100%;
   max-width: 439px;
   height: 48px;
   padding: 0px, 16px, 0px, 0px;
@@ -51,7 +57,6 @@ const InputBusca = styled.div`
   }
 
   input {
-    width: 25vw;
     padding-left: 8px;
     font-size: 16px;
 
@@ -82,7 +87,9 @@ const Descricao = styled.span`
   margin: 0 auto;
 `
 const CardsBusca = styled.div`
-  display: table-column-group;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   gap: 10px;
 
   span {
