@@ -17,10 +17,6 @@ export default function Home() {
         <NavigationMenu />
 
         <Depoimentos />
-        <Depoimentos />
-        <Depoimentos />
-        <Depoimentos />
-        <Depoimentos />
       </section>
     </>
   )
