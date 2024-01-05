@@ -129,43 +129,37 @@ export default function Busca() {
           </button>
         </span>
         <span>
-          Neurologista{' '}
+          Dermatologista{' '}
           <button>
             <AiOutlineClose />
           </button>
         </span>
         <span>
-          Neurologista{' '}
+          Cardiologista{' '}
           <button>
             <AiOutlineClose />
           </button>
         </span>
         <span>
-          Neurologista{' '}
+          Ortopedista{' '}
           <button>
             <AiOutlineClose />
           </button>
         </span>
         <span>
-          Neurologista{' '}
+          Oftalmologista{' '}
           <button>
             <AiOutlineClose />
           </button>
         </span>
         <span>
-          Neurologista{' '}
+          Pediatria{' '}
           <button>
             <AiOutlineClose />
           </button>
         </span>
         <span>
-          Neurologista{' '}
-          <button>
-            <AiOutlineClose />
-          </button>
-        </span>
-        <span>
-          Neurologista{' '}
+          Reumatologista{' '}
           <button>
             <AiOutlineClose />
           </button>
