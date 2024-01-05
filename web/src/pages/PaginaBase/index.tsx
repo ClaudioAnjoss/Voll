@@ -8,7 +8,6 @@ export default function PaginaBase() {
     <>
       <Cabecalho />
       <main>
-        <Home />
         <Outlet />
       </main>
       <Rodape />

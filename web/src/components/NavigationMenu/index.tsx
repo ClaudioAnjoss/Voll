@@ -66,23 +66,6 @@ export default function NavigationMenu() {
         <AiOutlineShop className="icon" />
         <span>Encontre especialistas</span>
       </CardMenu>
-
-      <CardMenu>
-        <AiOutlineShop className="icon" />
-        <span>Encontre especialistas</span>
-      </CardMenu>
-      <CardMenu>
-        <AiOutlineShop className="icon" />
-        <span>Encontre especialistas</span>
-      </CardMenu>
-      <CardMenu>
-        <AiOutlineShop className="icon" />
-        <span>Encontre especialistas</span>
-      </CardMenu>
-      <CardMenu>
-        <AiOutlineShop className="icon" />
-        <span>Encontre especialistas</span>
-      </CardMenu>
     </ContainerMenu>
   )
 }
