@@ -32,6 +32,17 @@ const Container = styled.div`
     font-weight: 400;
     line-height: 19.4px; /* 121.25% */
   }
+
+  .cadastro {
+    color: #339cff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .botao-large {
+    width: 90%;
+    max-width: 280px;
+  }
 `
 
 export default function Login() {
@@ -55,9 +66,12 @@ export default function Login() {
         onChange={setSenha}
         label="Senha"
       />
-      <Botao>Entrar</Botao>
-      <span className="esqueceuSenha">Esqueceu sua senha?</span>
-      <span className="cadastro">Ainda não tem conta? Faça seu cadastro!</span>
+      <Botao className="botao-large">Entrar</Botao>
+      <span>Esqueceu sua senha?</span>
+      <span>
+        Ainda não tem conta?{' '}
+        <span className="cadastro">Faça seu cadastro!</span>
+      </span>
     </Container>
   )
 }

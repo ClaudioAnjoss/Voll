@@ -25,6 +25,13 @@ const Container = styled.div`
   align-items: center;
 
   background-color: #fff;
+
+  @media only screen and (max-width: 1000px) {
+    width: 70vw;
+  }
+  @media only screen and (max-width: 360px) {
+    width: 100vw;
+  }
 `
 
 export default function PaginaBaseFormulario() {
