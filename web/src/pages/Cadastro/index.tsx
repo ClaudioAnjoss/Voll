@@ -1,4 +1,4 @@
-import { Step, StepLabel, Stepper } from '@mui/material'
+import { Box, Button, Step, StepLabel, Stepper } from '@mui/material'
 import Botao from 'components/Botao'
 import CampoDigitacao from 'components/CampoDigitacao'
 import { useState } from 'react'
@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import IClinica from 'types/IClinica'
 import usePost from 'usePost'
+import ReplyRoundedIcon from '@mui/icons-material/ReplyRounded'
 
 interface PropsCustomizadas {
   cor: string
@@ -15,7 +16,7 @@ const StepCustomizado = styled.div<PropsCustomizadas>`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  margin-top: 5.5em;
+  /* margin-top: 5.5em; */
 `
 
 const Formulario = styled.form`
@@ -29,6 +30,7 @@ const Formulario = styled.form`
   .botao-large {
     width: 100%;
     max-width: 312px;
+    margin-bottom: 1em;
 
     cursor: pointer;
   }
@@ -99,25 +101,32 @@ export default function Cadastro() {
 
   return (
     <>
-      <Stepper activeStep={etapaAtiva}>
-        <Step>
-          <StepLabel
-            StepIconComponent={(props) => (
-              <StepCustomizado cor={props.active ? 'lightblue' : 'lightgray'} />
-            )}
-          />
-        </Step>
-        <Step>
-          <StepLabel
-            StepIconComponent={(props) => (
-              <StepCustomizado cor={props.active ? 'lightblue' : 'lightgray'} />
-            )}
-          />
-        </Step>
-      </Stepper>
+      <Box sx={{ width: '140px' }}>
+        <Stepper activeStep={etapaAtiva}>
+          <Step>
+            <StepLabel
+              StepIconComponent={(props) => (
+                <StepCustomizado
+                  cor={props.active ? 'lightblue' : 'lightgray'}
+                />
+              )}
+            />
+          </Step>
+          <Step>
+            <StepLabel
+              StepIconComponent={(props) => (
+                <StepCustomizado
+                  cor={props.active ? 'lightblue' : 'lightgray'}
+                />
+              )}
+            />
+          </Step>
+        </Stepper>
+      </Box>
+
       {etapaAtiva === 0 ? (
         <>
-          <Titulo>Primeiro, alguns dados básicos:</Titulo>
+          <Titulo> Primeiro, alguns dados básicos:</Titulo>
 
           <Formulario onSubmit={handleSubmit}>
             <CampoDigitacao
@@ -156,6 +165,9 @@ export default function Cadastro() {
               label="Repita a senha"
             />
             <Botao className="botao-large">Avancar</Botao>
+            <Button className="botao-large" onClick={() => navigate(-1)}>
+              Voltar <ReplyRoundedIcon />
+            </Button>
           </Formulario>
         </>
       ) : (

@@ -1,6 +1,8 @@
 import Botao from 'components/Botao'
 import CampoDigitacao from 'components/CampoDigitacao'
+import Cadastro from 'pages/Cadastro'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Titulo = styled.h1`
@@ -36,7 +38,7 @@ const Container = styled.div`
   .cadastro {
     color: #339cff;
     font-weight: bold;
-    cursor: pointer;
+    text-decoration: none;
   }
 
   .botao-large {
@@ -70,7 +72,9 @@ export default function Login() {
       <span>Esqueceu sua senha?</span>
       <span>
         Ainda não tem conta?{' '}
-        <span className="cadastro">Faça seu cadastro!</span>
+        <Link to="/cadastro" className="cadastro">
+          Faça seu cadastro!
+        </Link>
       </span>
     </Container>
   )

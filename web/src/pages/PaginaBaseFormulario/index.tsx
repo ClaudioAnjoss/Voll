@@ -26,6 +26,10 @@ const Container = styled.div`
 
   background-color: #fff;
 
+  .logo {
+    margin-bottom: 5em;
+  }
+
   @media only screen and (max-width: 1000px) {
     width: 70vw;
   }
@@ -38,7 +42,7 @@ export default function PaginaBaseFormulario() {
   return (
     <ContainerPrincipal>
       <Container>
-        <img src={Logo} alt="Voll" />
+        <img className="logo" src={Logo} alt="Voll" />
         <Outlet />
       </Container>
     </ContainerPrincipal>
