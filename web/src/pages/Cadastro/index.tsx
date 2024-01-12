@@ -139,6 +139,15 @@ export default function Cadastro() {
               )}
             />
           </Step>
+          <Step>
+            <StepLabel
+              StepIconComponent={(props) => (
+                <StepCustomizado
+                  cor={props.active ? 'lightblue' : 'lightgray'}
+                />
+              )}
+            />
+          </Step>
         </Stepper>
       </Box>
 
