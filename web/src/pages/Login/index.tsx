@@ -1,9 +1,12 @@
+import { Button } from '@mui/material'
 import Botao from 'components/Botao'
 import CampoDigitacao from 'components/CampoDigitacao'
-import Cadastro from 'pages/Cadastro'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import autenticaStore from 'stores/autentica.store'
 import styled from 'styled-components'
+import usePost from 'usePost'
+import ReplyRoundedIcon from '@mui/icons-material/ReplyRounded'
 
 const Titulo = styled.h1`
   color: var(--Text-Text-1, #6b6e71);
@@ -16,7 +19,7 @@ const Titulo = styled.h1`
   font-weight: 700;
   line-height: normal;
 `
-const Container = styled.div`
+const Formulario = styled.form`
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -47,12 +50,37 @@ const Container = styled.div`
   }
 `
 
+interface ILogin {
+  email: string
+  senha: string
+}
+
 export default function Login() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const { CadastrarDados, erro, sucesso, resposta } = usePost()
+  const navigate = useNavigate()
+
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const usuario: ILogin = {
+      email,
+      senha,
+    }
+
+    try {
+      CadastrarDados({ url: 'auth/login', dados: usuario })
+      autenticaStore.login({ email, token: resposta })
+      resposta && navigate('/dashboard')
+    } catch (erro) {
+      console.log(erro)
+      console.log('erro de login')
+      erro && alert('Nao foi possivel fazer login')
+    }
+  }
 
   return (
-    <Container>
+    <Formulario onSubmit={handleLogin}>
       <Titulo>Faça login em sua conta</Titulo>
       <CampoDigitacao
         valor={email}
@@ -69,6 +97,9 @@ export default function Login() {
         label="Senha"
       />
       <Botao className="botao-large">Entrar</Botao>
+      <Button className="botao-large" onClick={() => navigate('/')}>
+        Pagina Inicial <ReplyRoundedIcon />
+      </Button>
       <span>Esqueceu sua senha?</span>
       <span>
         Ainda não tem conta?{' '}
@@ -76,6 +107,6 @@ export default function Login() {
           Faça seu cadastro!
         </Link>
       </span>
-    </Container>
+    </Formulario>
   )
 }

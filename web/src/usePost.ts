@@ -3,10 +3,11 @@ import { useState } from 'react'
 export default function usePost() {
   const [erro, setErro] = useState('')
   const [sucesso, setSucesso] = useState(false)
+  const [resposta, setResposta] = useState('')
 
   async function CadastrarDados<T>({ url, dados }: { url: string; dados: T }) {
     try {
-      await fetch(`http://localhost:8080/${url}`, {
+      const resposta = await fetch(`http://localhost:8080/${url}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -14,10 +15,12 @@ export default function usePost() {
         body: JSON.stringify(dados),
       })
       setSucesso(true)
+      const respostaConvertida = await resposta.json()
+      setResposta(respostaConvertida.token)
     } catch (erro) {
       setErro('Nao foi possivel enviar os dados')
     }
   }
 
-  return { CadastrarDados, sucesso, erro }
+  return { CadastrarDados, sucesso, erro, resposta }
 }
