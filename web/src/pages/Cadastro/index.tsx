@@ -11,6 +11,21 @@ import ReplyRoundedIcon from '@mui/icons-material/ReplyRounded'
 interface PropsCustomizadas {
   cor: string
 }
+const ContainerGlobal = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  .step-customizado {
+    span {
+      padding: 0;
+    }
+  }
+`
+
 const StepCustomizado = styled.div<PropsCustomizadas>`
   background-color: ${({ cor }) => cor};
   width: 24px;
@@ -100,32 +115,14 @@ export default function Cadastro() {
   }
 
   return (
-    <>
+    <ContainerGlobal>
       <Box sx={{ width: '140px' }}>
-        <Stepper activeStep={etapaAtiva}>
+        <Stepper activeStep={etapaAtiva} className="step-customizado">
           <Step>
             <StepLabel
               StepIconComponent={(props) => (
                 <StepCustomizado
-                  cor={props.active ? 'lightblue' : 'lightgray'}
-                />
-              )}
-            />
-          </Step>
-          <Step>
-            <StepLabel
-              StepIconComponent={(props) => (
-                <StepCustomizado
-                  cor={props.active ? 'lightblue' : 'lightgray'}
-                />
-              )}
-            />
-          </Step>
-          <Step>
-            <StepLabel
-              StepIconComponent={(props) => (
-                <StepCustomizado
-                  cor={props.active ? 'lightblue' : 'lightgray'}
+                  cor={props.active || etapaAtiva ? 'lightblue' : 'lightgray'}
                 />
               )}
             />
@@ -237,6 +234,6 @@ export default function Cadastro() {
           </Formulario>
         </>
       )}
-    </>
+    </ContainerGlobal>
   )
 }
