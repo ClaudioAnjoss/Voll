@@ -148,6 +148,18 @@ export default function ModalCadastro({
               placeholder="Estado"
               onChange={setEstado}
             />
+            <CampoDigitacao
+              tipo="text"
+              valor={estado}
+              placeholder="Estado"
+              onChange={setEstado}
+            />
+            <CampoDigitacao
+              tipo="text"
+              valor={estado}
+              placeholder="Estado"
+              onChange={setEstado}
+            />
           </div>
           <div className="plano"></div>
         </Formulario>
