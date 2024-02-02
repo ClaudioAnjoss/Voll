@@ -29,7 +29,7 @@ const Rotulo = styled.label`
 `
 
 interface Props {
-  valor: string
+  valor: string | undefined
   tipo: string
   placeholder: string
   onChange: (value: string) => void

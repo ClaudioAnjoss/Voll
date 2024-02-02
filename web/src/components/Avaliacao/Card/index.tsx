@@ -53,7 +53,7 @@ function Card({ profissional }: { profissional: IProfissional }) {
       <ListaEstilizada>
         <ItemEstilizado>
           <ImagemEstilizada
-            src={profissional.imagem}
+            src="https://imgur.com/ho9CUwp.png"
             alt={`Foto de perfil do profissional ${profissional.nome}`}
           />
         </ItemEstilizado>
@@ -64,11 +64,7 @@ function Card({ profissional }: { profissional: IProfissional }) {
           </ParagrafoEstilizado>
         </ItemInformacoesEstilizado>
         <ItemEstilizado>
-          <Rating
-            name="simple-controlled"
-            value={profissional.nota}
-            readOnly={true}
-          />
+          <Rating name="simple-controlled" value={3} readOnly={true} />
         </ItemEstilizado>
       </ListaEstilizada>
     </ContainerEstilizado>

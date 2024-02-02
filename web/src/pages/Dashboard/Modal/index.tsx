@@ -1,8 +1,21 @@
-import { Box, Modal } from '@mui/material'
+import { CheckBox, Close } from '@mui/icons-material'
+import {
+  Box,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Modal,
+  Switch,
+} from '@mui/material'
+import Botao from 'components/Botao'
 import CampoDigitacao from 'components/CampoDigitacao'
+import Subtitulo from 'components/Subtitulo'
 import Titulo from 'components/Titulo'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import autenticaStore from 'stores/autentica.store'
 import styled from 'styled-components'
+import IProfissional from 'types/IProfissional'
+import usePost from 'usePost'
 
 const BoxCustomizado = styled(Box)`
   position: fixed;
@@ -16,6 +29,30 @@ const BoxCustomizado = styled(Box)`
   border: none;
   border-radius: 16px;
   padding: 1em 5em;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--azul-claro);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--cinza-claro);
+    border-radius: 10px;
+    margin: 10px;
+  }
+`
+const CloseCustomizado = styled(Close)`
+  width: 24px;
+  height: 24px;
+  color: var(--azul-claro);
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
 `
 
 const Formulario = styled.form`
@@ -24,6 +61,19 @@ const Formulario = styled.form`
     grid-template-columns: 2fr 1fr;
     grid-gap: 0 1em;
   }
+`
+
+const ContainerSwitch = styled.div`
+  text-align: center;
+`
+const TextoSwitch = styled.p`
+  color: var(--cinza);
+`
+const BotaoCustomizado = styled(Botao)`
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
 `
 
 export default function ModalCadastro({
@@ -46,6 +96,53 @@ export default function ModalCadastro({
   const [numero, setNumero] = useState('')
   const [complemento, setComplemento] = useState('')
   const [estado, setEstado] = useState('')
+  const [possuiPlano, setPossuiPlano] = useState(false)
+  const [planoSelecionado, setPlanoSelecionado] = useState<string[]>([])
+  const label = { inputProps: { 'aria-label': 'Atende por plano?' } }
+  const { CadastrarDados } = usePost()
+  const { usuario } = autenticaStore
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const checkboxValue = event.target.value
+
+    if (event.target.checked) {
+      setPlanoSelecionado([...planoSelecionado, checkboxValue])
+    } else {
+      setPlanoSelecionado(
+        planoSelecionado.filter((plano) => plano !== checkboxValue),
+      )
+    }
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const profissional: IProfissional = {
+      nome,
+      crm,
+      especialidade,
+      possuiPlanoSaude: possuiPlano,
+      senha,
+      planosSaude: planoSelecionado,
+      estaAtivo: true,
+      imagem: url,
+      email,
+      telefone,
+      endereco: {
+        cep,
+        rua,
+        estado,
+        numero,
+        complemento,
+      },
+    }
+
+    await CadastrarDados({
+      url: 'especialista',
+      dados: profissional,
+      token: usuario.token,
+    })
+  }
 
   return (
     <Modal
@@ -56,8 +153,9 @@ export default function ModalCadastro({
       aria-describedby="Nesse modal tera os dados de cadastro do especialista"
     >
       <BoxCustomizado>
+        <CloseCustomizado onClick={handleClose} />
         <Titulo>Cadastre o especialista inserindo os dados abaixo:</Titulo>
-        <Formulario>
+        <Formulario onSubmit={handleSubmit}>
           <div className="dados">
             <CampoDigitacao
               tipo="text"
@@ -95,7 +193,7 @@ export default function ModalCadastro({
               label="Especialidade"
             />
             <CampoDigitacao
-              tipo="text"
+              tipo="number"
               valor={crm}
               placeholder="Insira seu número de registro"
               onChange={setCrm}
@@ -148,20 +246,63 @@ export default function ModalCadastro({
               placeholder="Estado"
               onChange={setEstado}
             />
-            <CampoDigitacao
-              tipo="text"
-              valor={estado}
-              placeholder="Estado"
-              onChange={setEstado}
-            />
-            <CampoDigitacao
-              tipo="text"
-              valor={estado}
-              placeholder="Estado"
-              onChange={setEstado}
-            />
           </div>
-          <div className="plano"></div>
+          <ContainerSwitch>
+            <Subtitulo>Atende por plano?</Subtitulo>
+            <Switch
+              checked={possuiPlano}
+              {...label}
+              onChange={(event) => {
+                setPossuiPlano(event.target.checked)
+              }}
+            />
+            <TextoSwitch>Não/Sim</TextoSwitch>
+          </ContainerSwitch>
+          {possuiPlano ? (
+            <>
+              <Subtitulo>Selecione os planos:</Subtitulo>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox onChange={handleChange} value="Sulamerica" />
+                  }
+                  label="Sulamerica"
+                />
+                <FormControlLabel
+                  control={<Checkbox onChange={handleChange} value="Unimed" />}
+                  label="Unimed"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox onChange={handleChange} value="Bradesco" />
+                  }
+                  label="Bradesco"
+                />
+                <FormControlLabel
+                  control={<Checkbox onChange={handleChange} value="Amil" />}
+                  label="Amil"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox onChange={handleChange} value="Biosaúde" />
+                  }
+                  label="Biosaúde"
+                />
+                <FormControlLabel
+                  control={<Checkbox onChange={handleChange} value="Biovida" />}
+                  label="Biovida"
+                />
+                <FormControlLabel
+                  control={<Checkbox onChange={handleChange} value="Outro" />}
+                  label="Outro"
+                />
+              </FormGroup>
+            </>
+          ) : (
+            ''
+          )}
+
+          <BotaoCustomizado>Cadastrar</BotaoCustomizado>
         </Formulario>
       </BoxCustomizado>
     </Modal>

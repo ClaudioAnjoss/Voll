@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import Botao from 'components/Botao'
 import CampoDigitacao from 'components/CampoDigitacao'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import autenticaStore from 'stores/autentica.store'
 import styled from 'styled-components'
@@ -71,13 +71,14 @@ export default function Login() {
     try {
       CadastrarDados({ url: 'auth/login', dados: usuario })
       autenticaStore.login({ email, token: resposta })
-      resposta && navigate('/dashboard')
     } catch (erro) {
-      console.log(erro)
-      console.log('erro de login')
-      erro && alert('Nao foi possivel fazer login')
+      alert('Nao foi possivel fazer login')
     }
   }
+
+  useEffect(() => {
+    resposta && navigate('/dashboard')
+  }, [navigate, resposta])
 
   return (
     <Formulario onSubmit={handleLogin}>
@@ -96,7 +97,9 @@ export default function Login() {
         onChange={setSenha}
         label="Senha"
       />
-      <Botao className="botao-large">Entrar</Botao>
+      <Botao className="botao-large" type="submit">
+        Entrar
+      </Botao>
       <Button className="botao-large" onClick={() => navigate('/')}>
         Pagina Inicial <ReplyRoundedIcon />
       </Button>

@@ -89,8 +89,6 @@ const Formulario = styled.form`
 
 function Cabecalho() {
   const { estaAutenticado } = autenticaStore
-
-  console.log(estaAutenticado)
   return (
     <CabecalhoEstilizado>
       <img src={logo} className="logo" alt="logo da empresa Voll" />
